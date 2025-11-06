@@ -26,6 +26,7 @@ return (
       grabCursor={true} // если true, курсор меняется на «руку» при наведении / перетаскивании.
       // centeredSlides={true} // Центрирует активный слайд
       // slidesPerGroup={2} // сколько слайдов перелистывать за один шаг
+      // speed={800} - Определяет длительность анимации при смене слайда (в мс).
       loop={true} // если true, слайды зацикливаются
       
       // модули навигации/точек/ползунка/автоматическая прокрутка
@@ -74,7 +75,6 @@ return (
       // | Карточки  | `EffectCards`     | cards             |
       // | Куб       | `EffectCube`      | cube              |
       // | Coverflow | `EffectCoverflow` | coverflow         |
-
    >
       <SwiperSlide><div className='img'>1<img src="/vite.svg" alt="vite" /></div></SwiperSlide>
       <SwiperSlide><div className='img'>2<img src="/vite.svg" alt="vite" /></div></SwiperSlide>
@@ -90,7 +90,18 @@ return (
    </button>
    <button className="custom-prev">←</button>
    <button className="custom-next">→</button>
-   <div className="custom-pagination"></div>
+   <div className="custom-pagination"></div> 
 </div>
 )}
 export default Swiper_с
+
+// Прочие модули:
+
+// Virtual - Очень важно для длинных списков — рендерит в DOM только видимые слайды
+// Keyboard / Mousewheel - Управление клавишами и колесом мыши
+// Модуль A11y - добавляет aria-атрибуты и улучшает навигацию для скринридеров
+// Zoom - Зум и паннинг внутри слайда (полезно для галерей картинок)
+// Lazy - ленивая подгрузка картинок - но чет не робит у меня
+// Много других Событий (Events)
+// Полностью отключает реальное движение DOM, только логически меняет активный слайд. Нужно для случаев, когда ты сам анимируешь движение через GSAP или CSS.
+// <Swiper virtualTranslate={true} onSlideChange={() => console.log("change")} /> - Слайды не будут двигаться, но событие onSlideChange будет вызываться
